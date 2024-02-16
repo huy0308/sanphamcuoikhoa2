@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./asset/home.css">
+</link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body onload="showAll()">
+    <header>
+        <div class="logos">
+            <img class="logo" src="./img/images.png">
+        </div>
+        <ul class="nav">
+            <li>
+                <a href="home.html">HOME</a>
+            </li>
+            <li>
+                <a>ABOUT</a>
+            </li>
+            <li>
+                <a href="shop.html">MENU
+                </a>
+                <ul class="subnav">
+                    <li><a href="">Nam</a></li>
+                    <li><a href="">Nu</a></li>
+                    <li><a href="">Giam Gia</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">CONTACT</a>
+            </li>
+        </ul>
+        <div class="icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="./login.html">
+                <i class="fa-solid fa-user" id="users"></i>
+            </a>
+            <div class="lines"></div>
+            <i class="fa-solid fa-globe"></i>
+        </div>
+        
+    </header>
+    <div id="items_table">
+        <h2>Shopping cart</h2>
+        <table border="1" id="list"></table>
+    </div>
+    <script src="asset/account.js"></script>
+
+</body>
+</html>
