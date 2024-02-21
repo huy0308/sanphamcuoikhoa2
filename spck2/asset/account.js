@@ -127,8 +127,8 @@ const addToCart = (id) => {
 
     } else {
         cart.push({ product, quantity: 1 })
-        localStorage.setItem('cart', JSON.stringify(cart))
     }
+    localStorage.setItem('cart', JSON.stringify(cart))
 }
 function showAll() {
     var list = `<tr><th>Ten san pham</th><th>ten san pham</th><th>gia</th></tr>`;
