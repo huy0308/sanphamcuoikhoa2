@@ -328,3 +328,11 @@ footer {
     width: 100%;
     cursor: pointer;
 }
+.offer img{
+    width: 600px;
+}
+.offer{
+    text-align: center;
+    border-bottom: #110f29 1px solid;
+    margin: 20px;
+}

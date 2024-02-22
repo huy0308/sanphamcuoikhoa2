@@ -130,6 +130,12 @@ const addToCart = (id) => {
     }
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+function deleteitem(){
+    document.getElementById('del').addEventListener("click", function(){
+        var parent = this.parentElement.parentElement;
+        parent.remove();
+    });
+}
 function showAll() {
     var list = `<tr><th>Ten san pham</th><th>ten san pham</th><th>gia</th></tr>`;
     JSON.parse(localStorage.getItem('cart'))
@@ -137,10 +143,15 @@ function showAll() {
         list +=`<tr><td>`+element.product.name+
         `</td><td>`+element.quantity+
         `</td><td>`+element.product.price+
-        `</td></tr>`
+        `</td><td>
+
+       <input type="button" id='del' value="Delete" onclick='deleteitem()' />
+
+     </td></tr>`
    });
     document.getElementById('list').innerHTML = list
 }
+
 document.querySelectorAll('.ez').forEach(item => {
     item.addEventListener('click',event =>{
         modelcontainer.classList.add('show')
