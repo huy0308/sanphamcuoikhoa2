@@ -336,3 +336,9 @@ footer {
     border-bottom: #110f29 1px solid;
     margin: 20px;
 }
+#items_table{
+    text-align: center;
+}
+#items_table table{
+margin :auto ;
+}

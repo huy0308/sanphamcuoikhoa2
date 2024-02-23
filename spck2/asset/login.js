@@ -9,7 +9,9 @@ login.addEventListener('submit', (e) => {
         if (email.value.trim() == person[i].email
             && pw.value.trim() == person[i].pass && name.value.trim() == person[i].name) {
             window.location.href = 'home.html'
-            alert('ok roi do')
+            alert('finished')
+        }else{
+            alert('username or password are incorrect')
         }
     }
 })

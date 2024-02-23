@@ -12,22 +12,22 @@ register.addEventListener('submit', function (events) {
     console.log(passwordagain.value);
 
     if (email.value.trim().length == 0 && pw.value.trim().length == 0 && name.value.trim().length == 0) {
-        alert('nhap lai di');
+        alert('missing out something');
     } else if (email.value.trim().length == 0) {
-        alert('nhap lai email nhanh');
+        alert('please add your email');
     } else if (pw.value.trim().length == 0) {
-        alert('you,why');
+        alert('please add your password');
     } else if (name.value.trim().length == 0) {
-        alert('you buffon');
+        alert('please add your name');
     } else if (pw.value.trim() != passwordagain.value.trim()) {
-        alert('you again'); 
+        alert('please match your password'); 
     } else if (!emailRegex.test(email.value)) {
-        alert('sai dinh dang roi')
+        alert('your email is missing something')
     } else if (!passwordRegex.test(pw.value)) {
-        alert('sai dinh dang MK roi')
+        alert('your password is missing something')
     } else {
         if (localStorage.users) {
-            alert('ok roi do')
+            alert('finished')
             let user = JSON.parse(localStorage.users);
             user.push({
                 email: email.value.trim(),
@@ -35,6 +35,7 @@ register.addEventListener('submit', function (events) {
                 name: name.value.trim()
             })
             localStorage.setItem('users', JSON.stringify(user))
+            window.location.href = 'login.html'
         } else {
             localStorage.setItem('users', JSON.stringify([{
                 email: email.value.trim(),

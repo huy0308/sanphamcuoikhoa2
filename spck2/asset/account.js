@@ -4,70 +4,70 @@ let products = {
         {
             id: 1,
             name: "Innovative Ao Dai Peach - Purple",
-            price: "1.780.000đ ",
+            price: "1780000",
             image: "https://product.hstatic.net/1000136076/product/0k9a2714_917ee42098614fe891d198a8b1dfa296_grande.png"
         },
 
         {
             id: 2,
             name: "Traditional Ao Dai with Lisianthus Flower ",
-            price: "1.500.000đ ",
+            price: "1500000",
             image: "https://product.hstatic.net/1000136076/product/_mgl2520_5a1f0521afd14ba2a19c25a592fd4f04_grande.png"
         },
 
         {
             id: 3,
             name: "Nhat Binh Spring Ao Dai - Green",
-            price: "780.000đ ",
+            price: "780000",
             image: "https://product.hstatic.net/1000136076/product/0k9a3640_f3083bfaac55473b97a0b7447c72d7e3_grande.png"
         },
 
         {
             id: 4,
             name: "Nhat Binh Spring Ao Dai - Pink",
-            price: "780.000đ ",
+            price: "780.000đ",
             image: "https://product.hstatic.net/1000136076/product/0k9a3798_78508e7b90514a7eb4dfbad18c87d4f7_grande.png"
         },
 
         {
             id: 5,
             name: "Nhat Binh Spring Ao Dai - Red",
-            price: "780.000đ ",
+            price: "780000",
             image: "https://product.hstatic.net/1000136076/product/_mgl2567_3632c4b0d4854f3598ec55235a192ef5_grande.png"
         },
 
         {
             id: 6,
             name: "Lac Hoa Binh Ancient Ao Dai - Orange",
-            price: "870,000₫ ",
+            price: "870000",
             image: "https://product.hstatic.net/1000136076/product/_mgm2597_804395269ec44716a93b734326fa2454_grande.png"
         },
 
         {
             id: 7,
             name: "Ao Dai Ancient style Lac Hoa Binh - Hong",
-            price: "870,000₫",
+            price: "870000",
             image: "https://product.hstatic.net/1000136076/product/_mgl2722_4fe1e850aed44f1ba30408465e31bf93_grande.png"
         },
 
         {
             id: 8,
             name: "Lac Hoa Binh Ao Dai - Ancient Green Rice",
-            price: "870,000₫",
+            price: "870000",
             image: "https://product.hstatic.net/1000136076/product/img_2274_c997ed9e300041fbbb0c899f1083cc86_grande.png"
         },
 
         {
             id: 9,
             name: "Lac Hoa Binh Ancient Ao Dai - Red",
-            price: "870,000₫",
+            price: "870000",
             image: "https://product.hstatic.net/1000136076/product/_mgl4890_02be1582c5384bae82a0e8eb86819b3b_grande.png"
         },
 
         {
             id: 10,
             name: "Lac Hoa Binh Ancient Ao Dai - Yellow",
-            price: "870,000₫",
+            price: "870000",
             image: "https://product.hstatic.net/1000136076/product/_mgl5153_3922dcce8669459fa698c32c0d6c0757_grande.png"
         },
 
@@ -96,7 +96,7 @@ for (let items of products.data) {
     container.appendChild(name);
 
     let price = document.createElement("h6");
-    price.innerHTML = "<b>Price:</b> " + items.price;
+    price.innerHTML = "<b>Price:</b> " + items.price + "VND";
     container.appendChild(price);
 
     let btn = document.createElement("button")
@@ -130,26 +130,37 @@ const addToCart = (id) => {
     }
     localStorage.setItem('cart', JSON.stringify(cart))
 }
-function deleteitem(){
-    document.getElementById('del').addEventListener("click", function(){
-        var parent = this.parentElement.parentElement;
-        parent.remove();
-    });
+
+function convertMoney(num) {
+    return num.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+} //123467 => 123.467
+
+  function clearAll() {
+    localStorage.removeItem('cart');
+    document.getElementById('list').innerHTML = `<tr><th>Sản phẩms</th><th>Giá trị</th><th>Số lượng</th><th>Xóa</th></tr>`;
+    document.getElementById('tong').innerHTML = 0;
 }
+
 function showAll() {
-    var list = `<tr><th>Ten san pham</th><th>ten san pham</th><th>gia</th></tr>`;
+    var sum=0;
+    var list = `<tr><th>product name</th><th>quantity</th><th>price</th></tr>`;
     JSON.parse(localStorage.getItem('cart'))
         .forEach(element => {
         list +=`<tr><td>`+element.product.name+
         `</td><td>`+element.quantity+
-        `</td><td>`+element.product.price+
+        `</td><td>`+convertMoney(parseInt(element.product.price)) +
         `</td><td>
-
-       <input type="button" id='del' value="Delete" onclick='deleteitem()' />
-
+        
+        <input type="button" id='del' value="Delete" onclick='deleteitem()' />
+        
      </td></tr>`
-   });
-    document.getElementById('list').innerHTML = list
+     
+     //parseInt: chuyển chuôi "5" => số 5
+     sum += parseInt(element.product.price) * parseInt(element.quantity); //sum 
+     console.log(sum);
+    });
+    document.getElementById('list').innerHTML = list;
+    document.getElementById('tong').innerHTML = convertMoney(sum);
 }
 
 document.querySelectorAll('.ez').forEach(item => {
@@ -161,5 +172,12 @@ document.querySelectorAll('.ez').forEach(item => {
     anhuy.addEventListener('click', ()=>{
         modelcontainer.classList.remove('show');  
     });
+    function deleteitem(){
+        document.getElementById('del').addEventListener("click", function(){
+            var parent = this.parentElement.parentElement;
+            parent.remove();
+        });
+     
+    }
 
-
+    
